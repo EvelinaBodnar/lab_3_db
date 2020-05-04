@@ -3,8 +3,7 @@ CREATE TABLE Chocolate(
     bar_name VARCHAR2(128) NOT NULL,
     company INT NOT NULL,
     bean_type INT,
-    cocoa_perc float NOT NULL,
-    rating float NOT NULL)
+    cocoa_perc float NOT NULL)
 ALTER TABLE Chocolate
     ADD CONSTRAINT bar_name_pk PRIMARY KEY(bar_name);
 
