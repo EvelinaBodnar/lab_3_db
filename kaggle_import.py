@@ -13,7 +13,7 @@ data = csv.reader(csv_file, delimiter=',')
 
 company_un = []
 beens_un = []
-i = 1
+id = 1
 next(data)
 for row in data:
     bar_name = row[1].strip()
@@ -26,15 +26,15 @@ for row in data:
         company_un.append(company)
         cur.execute("INSERT INTO Company(company) VALUES(:company)", company=company)
 
-    if been not in beens_un:
-        beens_un.append(been)
-        cur.execute("INSERT INTO Bean(been) VALUES(:bean_type)", bean_type=been)
+    if bean_type not in beens_un:
+        beens_un.append(bean_type)
+        cur.execute("INSERT INTO Bean(bean_type) VALUES(:bean_type)", bean_type=bean_type)
 
-    cur.execute("INSERT INTO Chocolate(bar_id, bar_name, company, year) VALUES(:id, :bar_name, :company, :bean_type, :cocoa_perc)",
-		id = i, bar_name = bar_name, company = company, bean_type = bean_type, cocoa_perc = cocoa_perc)
+    cur.execute("INSERT INTO Chocolate(bar_id, bar_name, company, year) VALUES(:bar_id, :bar_name, :company, :bean_type, :cocoa_perc)",
+		bar_id = id, bar_name = bar_name, company = company, bean_type = bean_type, cocoa_perc = cocoa_perc)
 
 
-    i += 1
+    id += 1
 
 connection.commit()
 cur.close()
