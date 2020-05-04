@@ -1,4 +1,5 @@
 CREATE TABLE Chocolate(
+    bar_id NUMBER(16) NOT NULL,
     bar_name VARCHAR2(128) NOT NULL,
     company INT NOT NULL,
     bean_type INT,
