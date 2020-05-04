@@ -7,8 +7,7 @@ cur = connection.cursor()
 tables = ['Chocolate', 'Company', 'Beans']
 for table in tables:
     cur.execute("delete " +table)
-
-csv_file = open('flavors_of_cacao.csv', encoding='utf-8', errors='ignore')
+csv_file = open('flavors_of_cacao.csv', encoding='utf-8')
 data = csv.reader(csv_file, delimiter=',')
 
 company_un = []
@@ -20,9 +19,7 @@ for row in data:
     company = row[2].strip()
     bean_type = row[3].strip()
     cocoa_perc = row[4].strip()
-
-
-    if company not in company_un:
+   if company not in company_un:
         company_un.append(company)
         cur.execute("INSERT INTO Company(company) VALUES(:company)", company=company)
 
@@ -32,8 +29,6 @@ for row in data:
 
     cur.execute("INSERT INTO Chocolate(bar_id, bar_name, company, year) VALUES(:bar_id, :bar_name, :company, :bean_type, :cocoa_perc)",
 		bar_id = id, bar_name = bar_name, company = company, bean_type = bean_type, cocoa_perc = cocoa_perc)
-
-
     id += 1
 
 connection.commit()
