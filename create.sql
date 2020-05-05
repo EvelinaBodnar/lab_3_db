@@ -1,12 +1,3 @@
-CREATE TABLE Chocolate(
-    bar_id NUMBER(16) NOT NULL,
-    bar_name VARCHAR2(128) NOT NULL,
-    company INT NOT NULL,
-    bean_type INT,
-    cocoa_perc float NOT NULL)
-ALTER TABLE Chocolate
-    ADD CONSTRAINT bar_name_pk PRIMARY KEY(bar_name);
-
 CREATE TABLE Company(
     company VARCHAR2(128) NOT NULL);
 ALTER TABLE Company
@@ -15,7 +6,16 @@ ALTER TABLE Company
 CREATE TABLE Bean(
     bean_type VARCHAR2(128) NOT NULL);
 ALTER TABLE Bean
-    ADD CONSTRAINT bean_type_pk PRIMARY KEY(bean_type);    
+    ADD CONSTRAINT bean_type_pk PRIMARY KEY(bean_type);   
+
+CREATE TABLE Chocolate(
+    bar_id NUMBER(16) NOT NULL,
+    bar_name VARCHAR2(128) NOT NULL,
+    company VARCHAR2(128) NOT NULL,
+    bean_type VARCHAR2,
+    cocoa_perc float NOT NULL)
+ALTER TABLE Chocolate
+    ADD CONSTRAINT bar_name_pk PRIMARY KEY(bar_name);
     
 ALTER TABLE Chocolate
     ADD CONSTRAINT company_fk FOREIGN KEY(company) REFERENCES Company(company);
