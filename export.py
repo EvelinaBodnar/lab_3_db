@@ -12,14 +12,14 @@ except cx_Oracle.DatabaseError as exception:
     
 cur = connection.cursor()
 
-tabl = ['Chocolate', 'Company', 'Bean']
+tabl = ['Chocolate', 'Company']
 for table in tabl:
     with open(table + '.csv', 'w', newline = '') as file:
         cur.execute('SELECT * FROM ' + table)
         rows = cur.fetchone()
         wrCSV = csv.writer(file, delimiter=',')
         while rows:
-            wCSV.writerow(rows)
+            wrCSV.writerow(rows)
             rows = cur.fetchone()
 
 cur.close()
